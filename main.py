@@ -6,10 +6,7 @@ import numpy as np
 import sklearn
 from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
-file = 'random_forest_car_prediction_mode.pkl'
-with open(file, 'rb') as f:
-    model = pickle.load(f)
-# model = pickle.load(open(, 'rb'))
+model = pickle.load(open('random_forest_car_prediction_mode.pkl', 'rb'))
 
 
 @app.route('/', methods=['GET'])
