@@ -25,7 +25,7 @@ def predict():
     Fuel_Type_Diesel = 0
     if request.method == 'POST':
         Year = int(request.form['Year'])
-        Present_Price = float(request.form['Present_Price'])
+        Present_Price = float(request.form['Present_Price']) * 73.78 /100000
         Kms_Driven = int(request.form['Kms_Driven'])
         Kms_Driven2 = np.log(Kms_Driven)
         Owner = int(request.form['Owner'])
@@ -53,7 +53,7 @@ def predict():
         if output < 0:
             return render_template('index.html', prediction_texts="Sorry you cannot sell this car")
         else:
-            return render_template('index.html', prediction_text="You Can Sell The Car at {}".format(output))
+            return render_template('index.html', prediction_text="You Can Sell The Car at {:.3f} dollars".format((output * 100000)/73.78))
     else:
         return render_template('index.html')
 
